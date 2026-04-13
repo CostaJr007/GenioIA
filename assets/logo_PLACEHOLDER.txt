@@ -1,0 +1,4 @@
+ARQUIVO PLACEHOLDER - Substitua por uma imagem logo.png real
+
+Coloque sua logo aqui: D:\GenioIA\assets\logo.png
+Formato recomendado: PNG, 512x512 pixels
