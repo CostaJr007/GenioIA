@@ -34,14 +34,14 @@ const PasswordStrength: React.FC<PasswordStrengthProps> = ({ password }) => {
   };
 
   const strength = getStrength();
-  const width = password ? `${(strength.score / 3) * 100}%` : '0%';
+  const width = password ? `${(strength.score / 3) * 100}%` as const : '0%' as const;
 
   if (!password) return null;
 
   return (
     <View style={styles.strengthContainer}>
       <View style={styles.strengthBar}>
-        <View style={[styles.strengthFill, { width, backgroundColor: strength.color }]} />
+        <View style={[styles.strengthFill, { width: width as unknown as number, backgroundColor: strength.color }]} />
       </View>
       <Text style={[styles.strengthText, { color: strength.color }]}>
         Password strength: {strength.label}

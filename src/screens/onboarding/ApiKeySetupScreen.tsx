@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: typography.fontSize.h1,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     textAlign: 'center',
     marginBottom: spacing.md,

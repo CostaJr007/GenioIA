@@ -39,7 +39,7 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
 
       return () => animation.stop();
     }
-  }, [animate]);
+  }, [animate, animatedValue]);
 
   const opacity = animatedValue.interpolate({
     inputRange: [0, 1],
@@ -57,16 +57,18 @@ export const LoadingSkeleton: React.FC<LoadingSkeletonProps> = ({
     }
   };
 
+  const skeletonStyle: any = {
+    width,
+    height,
+    borderRadius: getBorderRadius(),
+    opacity,
+  };
+
   return (
     <Animated.View
       style={[
         styles.container,
-        {
-          width,
-          height,
-          borderRadius: getBorderRadius(),
-          opacity,
-        },
+        skeletonStyle,
         style,
       ]}
     />
@@ -108,7 +110,7 @@ export const ImageSkeleton: React.FC<{ style?: ViewStyle }> = ({ style }) => {
   return (
     <LoadingSkeleton
       height={200}
-      style={[styles.imageContainer, style]}
+      style={[styles.imageContainer, style] as unknown as ViewStyle}
     />
   );
 };

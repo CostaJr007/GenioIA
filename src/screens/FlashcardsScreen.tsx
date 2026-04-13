@@ -239,7 +239,7 @@ export const FlashcardsScreen: React.FC = () => {
       <Card style={styles.header} padding="md">
         <View style={styles.headerContent}>
           <View style={styles.headerIcon}>
-            <MaterialCommunityIcons name="flashcard" size={32} color={colors.textInverse} />
+            <MaterialCommunityIcons name="cards" size={32} color={colors.textInverse} />
           </View>
           <View style={styles.headerText}>
             <Text style={styles.headerTitle}>🎯 Flashcard Generator</Text>
@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: typography.fontSize.h2,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
   },
@@ -469,7 +469,7 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: typography.fontSize.h3,
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: '600' as const,
     color: colors.textPrimary,
     marginBottom: spacing.md,
   },
@@ -507,7 +507,7 @@ const styles = StyleSheet.create({
   },
   progressText: {
     fontSize: typography.fontSize.small,
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: '500' as const,
     color: colors.textPrimary,
     minWidth: 40,
   },
@@ -536,7 +536,7 @@ const styles = StyleSheet.create({
   },
   cardLabel: {
     fontSize: typography.fontSize.micro,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textTertiary,
     letterSpacing: 2,
     marginBottom: spacing.md,
@@ -567,7 +567,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: typography.fontSize.h3,
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: '500' as const,
     color: colors.textPrimary,
   },
   loadingSubtext: {

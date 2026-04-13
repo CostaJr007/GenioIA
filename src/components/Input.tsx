@@ -49,8 +49,8 @@ export const Input: React.FC<InputProps> = ({
         <TextInput
           style={[
             styles.input,
-            leftIcon && styles.inputWithLeftIcon,
-            (showPasswordToggle || rightIcon) && styles.inputWithRightIcon,
+            leftIcon ? styles.inputWithLeftIcon : null,
+            (showPasswordToggle || rightIcon) ? styles.inputWithRightIcon : null,
           ]}
           placeholderTextColor={colors.textTertiary}
           onFocus={() => setIsFocused(true)}
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: typography.fontSize.small,
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: '500' as const,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
   },

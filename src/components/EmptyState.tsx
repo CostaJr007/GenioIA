@@ -27,14 +27,14 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   style,
   illustration = 'custom',
 }) => {
-  const getIconName = () => {
-    if (icon) return icon;
-    
+  const getIconName = (): keyof typeof MaterialCommunityIcons.glyphMap => {
+    if (icon) return icon as keyof typeof MaterialCommunityIcons.glyphMap;
+
     switch (illustration) {
       case 'error':
         return 'alert-circle-outline';
       case 'loading':
-        return 'loading';
+        return 'autorenew';
       case 'success':
         return 'check-circle-outline';
       case 'warning':
@@ -60,19 +60,11 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   return (
     <View style={[styles.container, style]}>
       <View style={styles.iconContainer}>
-        {icon === 'custom' ? (
-          <MaterialCommunityIcons
-            name={getIconName()}
-            size={64}
-            color={getIconColor()}
-          />
-        ) : (
-          <MaterialCommunityIcons
-            name={getIconName()}
-            size={64}
-            color={getIconColor()}
-          />
-        )}
+        <MaterialCommunityIcons
+          name={getIconName()}
+          size={64}
+          color={getIconColor()}
+        />
       </View>
       
       <Text style={styles.title}>{title}</Text>
@@ -165,7 +157,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: typography.fontSize.h2,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     textAlign: 'center',
     marginBottom: spacing.sm,

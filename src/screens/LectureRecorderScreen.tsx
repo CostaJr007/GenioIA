@@ -38,7 +38,7 @@ export const LectureRecorderScreen: React.FC = () => {
   const waveformAnims = useRef(
     Array.from({ length: 20 }).map(() => new Animated.Value(0.3))
   ).current;
-  const recordingUri = `${FileSystem.documentDirectory}lecture-recording-${Date.now()}.m4a`;
+  const recordingUri = `${(FileSystem as any).documentDirectory}lecture-recording-${Date.now()}.m4a`;
 
   useEffect(() => {
     const loadKey = async () => {
@@ -87,12 +87,12 @@ export const LectureRecorderScreen: React.FC = () => {
 
       const pulseLoop = Animated.loop(
         Animated.sequence([
-          Animated.scale(pulseAnim, {
+          Animated.timing(pulseAnim, {
             toValue: 1.1,
             duration: 1000,
             useNativeDriver: true,
           }),
-          Animated.scale(pulseAnim, {
+          Animated.timing(pulseAnim, {
             toValue: 1,
             duration: 1000,
             useNativeDriver: true,
@@ -129,28 +129,12 @@ export const LectureRecorderScreen: React.FC = () => {
       const { sound } = await Audio.Sound.createAsync(
         { uri: recordingUri },
         {
-          android: {
-            extension: '.m4a',
-            outputFormat: Audio.AndroidOutputFormat.MPEG_4,
-            audioEncoder: Audio.AndroidAudioEncoder.AAC,
-            sampleRate: 44100,
-            numberOfChannels: 1,
-            bitRate: 128000,
-          },
-          ios: {
-            extension: '.m4a',
-            outputFormat: Audio.IOSOutputFormat.MPEG4AAC,
-            audioQuality: Audio.IOSAudioQuality.Medium,
-            sampleRate: 44100,
-            numberOfChannels: 1,
-            bitRate: 128000,
-          },
           isMeteringEnabled: true,
-        }
+        } as any
       );
 
       setRecording(sound);
-      await sound.recordAsync();
+      await (sound as any).recordAsync();
 
       setIsRecording(true);
       setRecordingTime(0);
@@ -172,7 +156,7 @@ export const LectureRecorderScreen: React.FC = () => {
     if (!recording) return;
 
     try {
-      await recording.stopAndUnloadAsync();
+      await (recording as any).stopAndUnloadAsync();
       setRecording(null);
       setIsRecording(false);
       if (timerRef.current) {
@@ -181,7 +165,7 @@ export const LectureRecorderScreen: React.FC = () => {
       }
 
       const asset = await MediaLibrary.createAssetAsync(recordingUri);
-      await MediaLibrary.saveToLibraryAsync(asset, 'GenioIA');
+      await MediaLibrary.createAlbumAsync('GenioIA', asset, false);
 
       showToast('Recording saved successfully!', 'success');
       await transcribeAudio();
@@ -427,7 +411,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: typography.fontSize.h2,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
   },
@@ -458,14 +442,14 @@ const styles = StyleSheet.create({
   },
   recordingLabel: {
     fontSize: typography.fontSize.small,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.error,
     letterSpacing: 1,
   },
   timer: {
     fontSize: 48,
     fontFamily: 'monospace',
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     letterSpacing: 2,
     marginVertical: spacing.sm,
@@ -517,7 +501,7 @@ const styles = StyleSheet.create({
   },
   resultTitle: {
     fontSize: typography.fontSize.h3,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
   },
   resultText: {
@@ -535,7 +519,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: typography.fontSize.h3,
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: '500' as const,
     color: colors.textPrimary,
   },
   loadingSubtext: {

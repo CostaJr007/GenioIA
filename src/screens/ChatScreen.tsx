@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
   },
   welcomeTitle: {
     fontSize: typography.fontSize.h1,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     textAlign: 'center',
     marginBottom: spacing.sm,

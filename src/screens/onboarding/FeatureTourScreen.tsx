@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: typography.fontSize.h1,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     marginBottom: spacing.sm,
   },
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
   },
   featureTitle: {
     fontSize: typography.fontSize.h3,
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: '600' as const,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
   },

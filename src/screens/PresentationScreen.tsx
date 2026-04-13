@@ -124,7 +124,7 @@ export const PresentationScreen: React.FC = () => {
       <Card style={styles.header} padding="md">
         <View style={styles.headerContent}>
           <View style={styles.headerIcon}>
-            <MaterialCommunityIcons name="format-presentation" size={32} color={colors.textInverse} />
+            <MaterialCommunityIcons name="presentation" size={32} color={colors.textInverse} />
           </View>
           <View style={styles.headerText}>
             <Text style={styles.headerTitle}>📊 Presentation Generator</Text>
@@ -263,7 +263,7 @@ export const PresentationScreen: React.FC = () => {
                     size="md"
                     fullWidth
                     icon={
-                      <MaterialCommunityIcons name="file-pdf" size={20} color={colors.primary[500]} />
+                      <MaterialCommunityIcons name="file" size={20} color={colors.primary[500]} />
                     }
                   />
                 </View>

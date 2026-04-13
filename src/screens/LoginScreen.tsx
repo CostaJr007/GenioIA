@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
   },
   appTitle: {
     fontSize: typography.fontSize.display,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
   },
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: typography.fontSize.h2,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
   },
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
   forgotPassword: {
     fontSize: typography.fontSize.small,
     color: colors.primary[500],
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: '500' as const,
   },
   loginButton: {
     marginTop: spacing.sm,
@@ -329,6 +329,6 @@ const styles = StyleSheet.create({
   registerLink: {
     fontSize: typography.fontSize.small,
     color: colors.primary[500],
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: '600' as const,
   },
 });

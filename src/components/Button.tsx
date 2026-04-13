@@ -153,7 +153,7 @@ export const Button: React.FC<ButtonProps> = ({
               styles.text,
               getSizeStyles().text,
               { color: getTextColor() },
-              icon && styles.textWithIcon,
+              icon ? styles.textWithIcon : null,
               textStyle,
             ]}
           >
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.98 }],
   },
   text: {
-    fontWeight: typography.fontWeight.semibold,
+    fontWeight: '600' as const,
     textAlign: 'center',
   },
   textWithIcon: {

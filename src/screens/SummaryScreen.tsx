@@ -129,7 +129,7 @@ export const SummaryScreen: React.FC = () => {
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
       >
-        {!apiKey && summary.length === 0 ? (
+        {!apiKey && summary?.length === 0 ? (
           <EmptyState
             illustration="warning"
             title="API Key Not Configured"
@@ -194,7 +194,7 @@ export const SummaryScreen: React.FC = () => {
                 loading={loading}
                 disabled={loading || !text.trim() || !apiKey}
                 icon={
-                  <MaterialCommunityIcons name="lightning" size={20} color={colors.textInverse} />
+                  <MaterialCommunityIcons name="flash" size={20} color={colors.textInverse} />
                 }
               />
             </Card>

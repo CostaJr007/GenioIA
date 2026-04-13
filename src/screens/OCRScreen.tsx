@@ -64,7 +64,7 @@ export const OCRScreen: React.FC = () => {
       quality: 0.9,
     });
 
-    if (!pickerResult.cancelled && pickerResult.assets[0]) {
+    if (!(pickerResult as any).cancelled && pickerResult.assets && pickerResult.assets[0]) {
       setImage(pickerResult.assets[0].uri);
       setResult(null);
       setConfidence(0);
@@ -85,7 +85,7 @@ export const OCRScreen: React.FC = () => {
       quality: 0.9,
     });
 
-    if (!cameraResult.cancelled && cameraResult.assets[0]) {
+    if (!(cameraResult as any).cancelled && cameraResult.assets && cameraResult.assets[0]) {
       setImage(cameraResult.assets[0].uri);
       setResult(null);
       setConfidence(0);
@@ -233,7 +233,7 @@ export const OCRScreen: React.FC = () => {
           <View style={styles.actionButtons}>
             <View style={styles.cameraGuide}>
               <View style={styles.cameraGuideFrame}>
-                <MaterialCommunityIcons name="frame" size={120} color={colors.primary[300]} />
+                <MaterialCommunityIcons name="crop" size={120} color={colors.primary[300]} />
               </View>
               <Text style={styles.guideText}>Frame your question within the guide</Text>
             </View>
@@ -374,7 +374,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: typography.fontSize.h2,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
     marginBottom: spacing.xs,
   },
@@ -430,7 +430,7 @@ const styles = StyleSheet.create({
     marginTop: spacing.sm,
     color: colors.textInverse,
     fontSize: typography.fontSize.body,
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: '500' as const,
   },
   confidenceCard: {
     ...shadows.sm,
@@ -450,7 +450,7 @@ const styles = StyleSheet.create({
   },
   confidenceText: {
     fontSize: typography.fontSize.small,
-    fontWeight: typography.fontWeight.medium,
+    fontWeight: '500' as const,
     textAlign: 'center',
   },
   resultCard: {
@@ -464,7 +464,7 @@ const styles = StyleSheet.create({
   },
   resultTitle: {
     fontSize: typography.fontSize.h3,
-    fontWeight: typography.fontWeight.bold,
+    fontWeight: '700' as const,
     color: colors.textPrimary,
   },
   resultText: {
